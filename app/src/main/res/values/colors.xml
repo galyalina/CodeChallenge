@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorAccent">#4CAF50</color>
 
-    <drawable name="touchFeedback">#CFD8DC</drawable>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+
+    <color name="divider">#BDBDBD</color>
+    <drawable name="touchFeedback">#FFFFFF</drawable>
+
+    <color name="repositoryHasWiki">@color/colorPrimaryLight</color>
+    <color name="repositoryHasnotWiki">@color/colorAccent</color>
+
 </resources>
