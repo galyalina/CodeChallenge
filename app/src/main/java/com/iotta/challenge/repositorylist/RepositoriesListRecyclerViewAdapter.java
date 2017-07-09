@@ -78,7 +78,7 @@ public class RepositoriesListRecyclerViewAdapter extends RecyclerView.Adapter<Re
 
     public class OnRepositoryItemClickListener implements View.OnClickListener{
 
-       RepositoriesListRecyclerViewAdapter.ViewHolder mHolder;
+       private final RepositoriesListRecyclerViewAdapter.ViewHolder  mHolder;
 
         public OnRepositoryItemClickListener(RepositoriesListRecyclerViewAdapter.ViewHolder holder){
             mHolder = holder;

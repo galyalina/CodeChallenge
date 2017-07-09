@@ -19,14 +19,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="http" android:host="www.codechallenge.com"/>
             </intent-filter>
         </activity>
         <activity
             android:name="com.iotta.challenge.repositorydetails.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

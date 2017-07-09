@@ -1,122 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ownerAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/user_icon_content_description"
-        android:minHeight="80dp"
-        android:minWidth="80dp"
-        android:src="@drawable/placeholder_user_icon" />
-
-    <TextView
-        android:id="@+id/txtOwnerName"
-        style="@style/RepositoryDetailsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtOwnerBlog"
-        android:layout_alignLeft="@+id/txtOwnerBlog"
-        android:layout_alignStart="@+id/txtOwnerBlog"
-        android:text="Owner Name" />
-
-    <TextView
-        android:id="@+id/txtOwnerBlog"
-        style="@style/RepositoryDetailsItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtOwnerEmail"
-        android:layout_alignLeft="@+id/txtOwnerEmail"
-        android:layout_alignStart="@+id/txtOwnerEmail"
-        android:text="www.google.com" />
-
-    <TextView
-        android:id="@+id/txtOwnerEmail"
-        style="@style/RepositoryDetailsItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ownerAvatar"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/ownerAvatar"
-        android:layout_toRightOf="@+id/ownerAvatar"
-        android:text="glitkin@gmail.com" />
-
-
-    <View
-        android:id="@+id/delimiter1"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/ownerAvatar"
-        android:layout_marginTop="20dp"
-        android:background="@color/divider" />
-
-    <TextView
-        android:id="@+id/txtDescriptionTitle"
-        style="@style/RepositoryDetailsItemSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/delimiter1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/details_description_title" />
-
-    <TextView
-        android:id="@+id/txtDescription"
-        style="@style/RepositoryDetailsItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDescriptionTitle"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/details_description_text_placeholder" />
-
-    <View
-        android:id="@+id/delimiter2"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/txtDescription"
-        android:layout_marginTop="20dp"
-        android:background="@color/divider" />
-
-    <TextView
-        android:id="@+id/txtLanguagesTitle"
-        style="@style/RepositoryDetailsItemSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/delimiter2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/details_languages_title" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtLanguagesTitle"
-        android:scrollbars="vertical"
-        android:visibility="gone" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtLanguages"
-        style="@style/RepositoryDetailsItemText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtLanguagesTitle"
-        android:layout_margin="10dp"
-        android:text="@string/details_languages_list_text_placeholder" />
+        <ImageView
+            android:id="@+id/ownerAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/user_icon_content_description"
+            android:minHeight="80dp"
+            android:minWidth="80dp"
+            android:src="@drawable/placeholder_user_icon" />
+
+        <TextView
+            android:id="@+id/txtOwnerName"
+            style="@style/RepositoryDetailsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtOwnerBlog"
+            android:layout_alignLeft="@+id/txtOwnerBlog"
+            android:layout_alignStart="@+id/txtOwnerBlog"/>
+
+        <TextView
+            android:id="@+id/txtOwnerBlog"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtOwnerEmail"
+            android:layout_alignLeft="@+id/txtOwnerEmail"
+            android:layout_alignStart="@+id/txtOwnerEmail"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/txtOwnerEmail"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ownerAvatar"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/ownerAvatar"
+            android:layout_toRightOf="@+id/ownerAvatar"/>
 
 
-</RelativeLayout>
+        <View
+            android:id="@+id/delimiter1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/ownerAvatar"
+            android:layout_marginTop="20dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/txtDescriptionTitle"
+            style="@style/RepositoryDetailsItemSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/delimiter1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_description_title" />
+
+        <TextView
+            android:id="@+id/txtDescription"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDescriptionTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_description_text_placeholder" />
+
+        <View
+            android:id="@+id/delimiter2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txtDescription"
+            android:layout_marginTop="20dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/txtLanguagesTitle"
+            style="@style/RepositoryDetailsItemSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/delimiter2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_languages_title" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLanguagesTitle"
+            android:scrollbars="vertical"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtLanguages"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLanguagesTitle"
+            android:layout_margin="10dp"
+            android:text="@string/details_languages_list_text_placeholder" />
+
+
+    </RelativeLayout>
+</ScrollView>

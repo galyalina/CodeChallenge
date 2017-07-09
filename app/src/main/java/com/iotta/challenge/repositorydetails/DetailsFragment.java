@@ -35,8 +35,7 @@ public class DetailsFragment extends Fragment implements DetailsContract.View {
     @NonNull
     private static final String ARGUMENT_TASK_ID = "TASK_ID";
 
-    private RecyclerView mLanguagesRecycleView;
-    View m_rootView;
+    private View m_rootView;
     private Handler mHandler;
     private DetailsContract.Presenter mPresenter;
 
@@ -91,7 +90,7 @@ public class DetailsFragment extends Fragment implements DetailsContract.View {
         TextView txtLanguages = (TextView) m_rootView.findViewById(R.id.txtLanguages);
         TextView txtOwnerBlog = (TextView) m_rootView.findViewById(R.id.txtOwnerBlog);
         TextView txtOwnerEmail = (TextView) m_rootView.findViewById(R.id.txtOwnerEmail);
-        mLanguagesRecycleView = (RecyclerView) m_rootView.findViewById(R.id.recycler_view);
+        RecyclerView mLanguagesRecycleView = (RecyclerView) m_rootView.findViewById(R.id.recycler_view);
 
         txtOwnerName.setText(repository.getOwner().getName());
         txtOwnerBlog.setText(repository.getOwner().getmBlogUrl());
@@ -137,10 +136,10 @@ public class DetailsFragment extends Fragment implements DetailsContract.View {
 
     class LanguagesListAdapter extends RecyclerView.Adapter<LanguagesListAdapter.ViewHolder> {
 
-        private ArrayList<Language> mDataset;
+        private final ArrayList<Language> mDataset;
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            private TextView mTextView;
+            private final TextView mTextView;
             private ViewHolder(TextView v) {
                 super(v);
                 mTextView = v;

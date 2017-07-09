@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +25,13 @@ import com.iotta.challenge.R;
 import com.iotta.challenge.model.pojo.Repository;
 import com.iotta.challenge.repositorydetails.DetailsActivity;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * A fragment representing a list of Items.
  */
-public class RepositoriesListFragment extends Fragment implements RepositoriesContract.View {
+public class RepositoriesListFragment extends Fragment implements RepositoriesContract.IView {
 
     private Handler mHandler;
-    private RepositoriesContract.Presenter mPresenter;
+    private RepositoriesContract.IPresenter mPresenter;
     private RecyclerView mRecyclerView;
     private LinearLayout mEmptyRepositoryLayout;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -78,6 +74,8 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
                 R.array.sort_options_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSortSpinner.setAdapter(adapter);
+        mSortSpinner.setVisibility(View.GONE);
+
         mSortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -93,8 +91,12 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
 
             }
         });
+
         mRecyclerView = (RecyclerView) root.findViewById(R.id.repositories_list);
+        mRecyclerView.setVisibility(View.GONE);
+
         mEmptyRepositoryLayout = (LinearLayout) root.findViewById(R.id.emptyRepositoryLayout);
+        mEmptyRepositoryLayout.setVisibility(View.GONE);
         mHandler = new Handler(Looper.getMainLooper());
         return root;
     }
@@ -116,6 +118,8 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
 
     }
 
+
+
     @Override
     public void showRepositories(List<Repository> repositories) {
         assert mRecyclerView != null;
@@ -129,6 +133,9 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(RepositoriesListFragment.this.getContext());
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mEmptyRepositoryLayout.setVisibility(View.GONE);
+                mSortSpinner.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+
                 mRecyclerView.setAdapter(new RepositoriesListRecyclerViewAdapter(mRepositories, new RepositoriesListRecyclerViewAdapter.IRepositoryItemListener() {
                     @Override
                     public void onRepositoryClick(String repositoryId) {
@@ -155,18 +162,27 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(RepositoriesListFragment.this.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+
+
+                if(mRecyclerView == null || mRecyclerView.getVisibility() == View.GONE){
+                    mEmptyRepositoryLayout.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
 
     @Override
     public void showNoRepositories() {
+        mEmptyRepositoryLayout.setVisibility(View.VISIBLE);
+        if(mRecyclerView != null){
+            mRecyclerView.setVisibility(View.GONE);
+        }
 
     }
 
     @Override
-    public void setPresenter(RepositoriesContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
+    public void setPresenter(@NonNull RepositoriesContract.IPresenter IPresenter) {
+        mPresenter = IPresenter;
     }
 
 }

@@ -1,5 +1,10 @@
 package com.iotta.challenge.model.pojo;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.util.Objects;
+
 /**
  * Created by Galya on 07/07/2017.
  */
@@ -7,7 +12,7 @@ package com.iotta.challenge.model.pojo;
 public class Language {
 
     private String mName;
-    private Long   mId;
+    private Long mId;
 
     public Language(String name, Long id) {
         this.mName = name;
@@ -28,5 +33,22 @@ public class Language {
 
     public void setId(Long id) {
         this.mId = id;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Language)) {
+            return false;
+        }
+        return new EqualsBuilder().append(mId, ((Language) (obj)).mId).append(mName, ((Language) (obj)).mName).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(mId)
+                .append(mName).toHashCode();
     }
 }

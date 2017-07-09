@@ -11,11 +11,14 @@ import java.util.HashMap;
 
 import com.iotta.challenge.model.pojo.Owner;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Created by Galya on 05/07/2017.
  */
 
-public class Repository{
+public class Repository implements Comparable{
 
     @SerializedName("owner")
     private Owner mOwner;
@@ -35,8 +38,8 @@ public class Repository{
     @SerializedName("has_wiki")
     private boolean mHasWiki;
 
-    @SerializedName("fork")
-    private boolean mHasFork;
+    @SerializedName("forks_count")
+    private int mForkCount;
 
     @SerializedName("languages_url")
     private String mLanguagesListUrl;
@@ -46,25 +49,25 @@ public class Repository{
 
 
     public Repository(String mID, String mName, String mDescription, Date mLastUpdate, boolean mHasWiki,
-                      boolean mHasFork, HashMap<String, Long> mLanguages, String avatarUrl, String ownerName, String blogUrl) {
-        this.mOwner = new Owner(avatarUrl, ownerName, blogUrl);
+                      int forkCount, HashMap<String, Long> mLanguages, String avatarUrl, String ownerName, String email, String blogUrl) {
+        this.mOwner = new Owner(avatarUrl, ownerName, blogUrl, email);
         this.mID = mID;
         this.mName = mName;
         this.mDescription = mDescription;
         this.mLastUpdate = mLastUpdate;
         this.mHasWiki = mHasWiki;
-        this.mHasFork = mHasFork;
+        this.mForkCount = forkCount;
         setLanguages(mLanguages);
     }
 
-    public Repository(Owner mOwner, String mID, String mName, String mDescription, Date mLastUpdate, boolean mHasWiki, boolean mHasFork, HashMap<String, Long> mLanguages) {
+    public Repository(Owner mOwner, String mID, String mName, String mDescription, Date mLastUpdate, boolean mHasWiki, int forkCount, HashMap<String, Long> mLanguages) {
         this.mOwner = mOwner;
         this.mID = mID;
         this.mName = mName;
         this.mDescription = mDescription;
         this.mLastUpdate = mLastUpdate;
         this.mHasWiki = mHasWiki;
-        this.mHasFork = mHasFork;
+        this.mForkCount = forkCount;
         setLanguages(mLanguages);
     }
 
@@ -123,16 +126,8 @@ public class Repository{
         return mHasWiki;
     }
 
-    public void setHasWiki(boolean hasWiki) {
-        this.mHasWiki = mHasWiki;
-    }
-
     public boolean hasFork() {
-        return mHasFork;
-    }
-
-    public void setHasFork(boolean hasFork) {
-        this.mHasFork = mHasFork;
+        return mForkCount>0;
     }
 
     public ArrayList<Language> getLanguages() {
@@ -143,8 +138,10 @@ public class Repository{
     }
 
     public void setLanguages(HashMap<String, Long> languages) {
-        this.mLanguages.clear();
 
+        if(this.mLanguages!=null) {
+            this.mLanguages.clear();
+        }
         for (String languageKey: languages.keySet()) {
             addLanguage(languageKey, languages.get(languageKey));
         }
@@ -156,5 +153,60 @@ public class Repository{
             mLanguages = new ArrayList<>();
         }
         this.mLanguages.add(language);
+    }
+
+
+//
+//    @Override
+//    public int hashCode() {
+//        return new HashCodeBuilder(17, 37)
+//                .append(mId)
+//                .append(mName).toHashCode();
+//    }
+//
+
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) return true;
+        if (!(obj instanceof Repository)) {
+            return false;
+        }
+
+        Repository other = (Repository) obj;
+        EqualsBuilder equalsBuilder = new EqualsBuilder().append(mID, other.mID);
+
+        equalsBuilder.append(mOwner, other.mOwner)
+                .append(mID, other.mID)
+                .append(mName, other.mName).append(mDescription, other.mDescription)
+                .append(mLastUpdate, other.mLastUpdate)
+                .append(mHasWiki, other.mHasWiki)
+                .append(mForkCount, other.mForkCount)
+                .append(mLanguagesListUrl, other.mLanguagesListUrl)
+                .append(mLanguages, other.mLanguages);
+
+        return equalsBuilder.isEquals();
+    }
+
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(mOwner)
+                .append(mID)
+                .append(mName)
+                .append(mLastUpdate)
+                .append(mHasWiki)
+                .append(mForkCount)
+                .append(mLanguagesListUrl)
+                .append(mLanguages).toHashCode();
+    }
+
+    @Override
+    public int compareTo(@NonNull Object obj) {
+        Repository compareTo = (Repository) obj;
+
+        return compareTo.getLastUpdate().compareTo(mLastUpdate);
     }
 }

@@ -2,6 +2,9 @@ package com.iotta.challenge.model.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Created by Galya on 05/07/2017.
  */
@@ -11,29 +14,31 @@ public class Owner {
     private boolean isUpdated = false;
 
     @SerializedName("avatar_url")
-    String mAvatarUrl;
+    private String mAvatarUrl;
 
     @SerializedName("name")
-    String mName;
+    private String mName;
 
     @SerializedName("url")
-    String mBlogUrl;
+    private String mBlogUrl;
 
     //In order to get email we need to execute get to mBlogUrl
     @SerializedName("email")
-    String mEmail;
+    private String mEmail;
 
     public Owner() {
+        this.mEmail = "";
         this.mAvatarUrl = "";
         this.mName = "";
         this.mBlogUrl = "";
     }
 
 
-    public Owner(String mAvatarUrl, String mName, String mBlogUrl) {
+    public Owner(String mAvatarUrl, String mName, String mBlogUrl, String strEmail) {
         this.mAvatarUrl = mAvatarUrl;
         this.mName = mName;
         this.mBlogUrl = mBlogUrl;
+        this.mEmail = strEmail;
     }
 
     public boolean isUpdated() {
@@ -76,5 +81,28 @@ public class Owner {
         this.mEmail = email;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Owner)) {
+            return false;
+        }
 
+        Owner objOwner = (Owner) obj;
+
+        return new EqualsBuilder().
+                append(mAvatarUrl, objOwner.mAvatarUrl).
+                append(mName, objOwner.mName).
+                append(mBlogUrl, objOwner.mBlogUrl).
+                append(mEmail, objOwner.mEmail).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().
+                append(mAvatarUrl).
+                append(mName).
+                append(mBlogUrl).
+                append(mEmail).toHashCode();
+    }
 }

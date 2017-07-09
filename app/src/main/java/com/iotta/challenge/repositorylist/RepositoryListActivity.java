@@ -9,8 +9,6 @@ import com.iotta.challenge.Injection;
 import com.iotta.challenge.R;
 import com.iotta.challenge.utils.AndroidUtils;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * An activity representing a list of Repositories. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -40,7 +38,7 @@ public class RepositoryListActivity extends AppCompatActivity{
         }
 
         // Create the presenter
-        mTasksPresenter = new RepositoriesPresenter(Injection.provideRepositoriesData(getApplicationContext()), repositoriesListFragment);
+        mTasksPresenter = new RepositoriesPresenter(Injection.provideRepositoriesData(), repositoriesListFragment);
     }
 
 }

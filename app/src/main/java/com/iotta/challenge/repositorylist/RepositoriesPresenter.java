@@ -18,19 +18,19 @@ import com.iotta.challenge.model.repositoriesmgr.RepositoriesManager;
  * Listens to user actions from the UI ({@link RepositoryListActivity}), retrieves the data and updates the
  * UI as required.
  */
-public class RepositoriesPresenter implements RepositoriesContract.Presenter {
+public class RepositoriesPresenter implements RepositoriesContract.IPresenter {
 
     private RepositoryFilterType mCurrentFiltering = RepositoryFilterType.UPDATE_DATE_DSC;
 
     //UI component
-    private final RepositoriesContract.View mRepositoriesView;
+    private final RepositoriesContract.IView mRepositoriesIView;
     //DB
     private IRepositoriesManager mRepositoriesManager;
 
 
-    public RepositoriesPresenter(@NonNull IRepositoriesManager repositoriesManager, @NonNull RepositoriesContract.View repositoriesView) {
-        mRepositoriesView = repositoriesView;
-        mRepositoriesView.setPresenter(this);
+    public RepositoriesPresenter(@NonNull IRepositoriesManager repositoriesManager, @NonNull RepositoriesContract.IView repositoriesIView) {
+        mRepositoriesIView = repositoriesIView;
+        mRepositoriesIView.setPresenter(this);
         mRepositoriesManager = repositoriesManager;
     }
 
@@ -46,7 +46,7 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
     public void loadRepositories(final boolean forceUpdate) {
 
         GetRepositoryCB callback = new GetRepositoryCB();
-        mRepositoriesView.setLoadingIndicator(true);
+        mRepositoriesIView.setLoadingIndicator(true);
 
         if (forceUpdate) {
             mRepositoriesManager.refreshRepositories(callback);
@@ -56,13 +56,13 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
     }
 
 
-    public void sortRepositories(List<Repository> repositories){
+    private void sortRepositories(List<Repository> repositories){
 
         if(mCurrentFiltering == RepositoryFilterType.UPDATE_DATE_DSC){
             Collections.sort(repositories, new Comparator<Repository>() {
                 @Override
                 public int compare(Repository o1, Repository o2) {
-                    return o1.getLastUpdate().compareTo(o2.getLastUpdate());
+                    return o2.compareTo(o1);
                 }
             });
 
@@ -70,7 +70,7 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
             Collections.sort(repositories, new Comparator<Repository>() {
                 @Override
                 public int compare(Repository o1, Repository o2) {
-                    return o2.getLastUpdate().compareTo(o1.getLastUpdate());
+                    return o1.compareTo(o2);
                 }
             });
         }
@@ -89,28 +89,26 @@ public class RepositoriesPresenter implements RepositoriesContract.Presenter {
 
     @Override
     public void openRepositoryDetails(@NonNull String repositoryId) {
-        mRepositoriesView.showRepositoryDetailsUi(repositoryId);
+        mRepositoriesIView.showRepositoryDetailsUi(repositoryId);
     }
 
 
     public class GetRepositoryCB implements IRepositoriesManager.IGetRepositoryCallback{
         @Override
         public void onSuccess(@NonNull List<Repository> repositories) {
-            mRepositoriesView.setLoadingIndicator(false);
-            if(repositories!=null && !repositories.isEmpty()) {
-
+            mRepositoriesIView.setLoadingIndicator(false);
+            if(!repositories.isEmpty()) {
                 sortRepositories(repositories);
-
-                mRepositoriesView.showRepositories(repositories);
+                mRepositoriesIView.showRepositories(repositories);
             }
             else{
-                mRepositoriesView.showNoRepositories();
+                mRepositoriesIView.showNoRepositories();
             }
         }
 
         @Override
         public void onFailed(String errorMessage) {
-            mRepositoriesView.showLoadingError(errorMessage);
+            mRepositoriesIView.showLoadingError(errorMessage);
         }
     }
 

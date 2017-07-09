@@ -15,7 +15,6 @@ import com.iotta.challenge.utils.AndroidUtils;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private DetailsPresenter mTasksPresenter;
     public static final String EXTRA_REPOSITORY_ID = "REPOSITORY_ID";
 
     @Override
@@ -36,7 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         // Create the presenter
-        mTasksPresenter = new DetailsPresenter(repositoryId, Injection.provideRepositoriesData(getApplicationContext()), detailsFragment);
+        new DetailsPresenter(repositoryId, Injection.provideRepositoriesData(), detailsFragment);
     }
 
 }

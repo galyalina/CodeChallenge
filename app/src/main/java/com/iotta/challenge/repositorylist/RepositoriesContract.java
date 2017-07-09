@@ -17,7 +17,7 @@ public class RepositoriesContract {
     /**
      * This specifies the contract between the view and the presenter.
      */
-    interface View extends BaseView<Presenter> {
+    interface IView extends BaseView<IPresenter> {
 
         boolean isActive();
 
@@ -33,7 +33,7 @@ public class RepositoriesContract {
 
     }
 
-    interface Presenter extends BasePresenter {
+    interface IPresenter extends BasePresenter {
 
         void loadRepositories(final boolean forceUpdate);
 

@@ -3,8 +3,6 @@ package com.iotta.challenge.model.repositoriesmgr;
 import android.support.annotation.NonNull;
 
 import java.util.List;
-
-import com.iotta.challenge.model.api.ApiError;
 import com.iotta.challenge.model.pojo.Owner;
 import com.iotta.challenge.model.pojo.Repository;
 
@@ -16,7 +14,7 @@ public interface IRepositoriesManager {
 
     interface IGetRepositoryCallback{
 
-        void onSuccess(List<Repository> tasks);
+        void onSuccess(@NonNull List<Repository> tasks);
 
         void onFailed(String errorDescription);
 
