@@ -1,19 +1,12 @@
-package com.iotta.challenge.repositorydetails;
+package com.iotta.challenge.viewpresenter.repositorydetails;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import com.iotta.challenge.model.pojo.Repository;
 import com.iotta.challenge.model.repositoriesmgr.IRepositoriesManager;
 import com.iotta.challenge.model.repositoriesmgr.RepositoriesManager;
-import com.iotta.challenge.repositorylist.RepositoriesContract;
-import com.iotta.challenge.repositorylist.RepositoryFilterType;
-import com.iotta.challenge.repositorylist.RepositoryListActivity;
+import com.iotta.challenge.viewpresenter.repositorylist.RepositoryListActivity;
 import com.iotta.challenge.utils.Logger;
 
 /**

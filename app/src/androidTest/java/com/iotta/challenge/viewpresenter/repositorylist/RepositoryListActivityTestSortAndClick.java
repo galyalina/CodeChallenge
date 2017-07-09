@@ -1,14 +1,11 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.FailureHandler;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewInteraction;
-import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.matcher.BoundedMatcher;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
@@ -17,20 +14,14 @@ import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.Until;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.view.View;
 
 import com.iotta.challenge.R;
-import com.iotta.challenge.model.api.ApiClient;
-import com.iotta.challenge.model.api.ApiInterface;
 import com.iotta.challenge.model.pojo.Owner;
 import com.iotta.challenge.model.pojo.Repository;
-import com.iotta.challenge.model.repositoriesmgr.IRepositoriesManager;
-import com.iotta.challenge.model.repositoriesmgr.RepositoriesManager;
 import com.iotta.challenge.utils.JavaUtils;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -50,7 +41,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNull.notNullValue;

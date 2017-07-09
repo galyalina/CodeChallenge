@@ -1,8 +1,6 @@
-package com.iotta.challenge.repositorydetails;
+package com.iotta.challenge.viewpresenter.repositorydetails;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Galya on 09/07/2017.

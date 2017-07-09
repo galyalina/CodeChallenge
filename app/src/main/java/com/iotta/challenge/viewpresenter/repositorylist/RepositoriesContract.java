@@ -1,4 +1,4 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 import android.support.annotation.NonNull;
 

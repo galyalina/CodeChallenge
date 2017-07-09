@@ -1,4 +1,4 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

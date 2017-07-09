@@ -1,6 +1,4 @@
-package com.iotta.challenge.repositorylist;
-
-import static org.junit.Assert.*;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 /**
  * Created by Galya on 09/07/2017.

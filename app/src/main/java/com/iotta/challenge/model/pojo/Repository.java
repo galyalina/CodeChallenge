@@ -15,22 +15,22 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Created by Galya on 05/07/2017.
+ * Created by Galya on 07/07/2017.
  */
 
-public class Repository implements Comparable{
+public class Repository implements Comparable {
 
     @SerializedName("owner")
     private Owner mOwner;
 
     @SerializedName("id")
-    private String  mID;
+    private String mID;
 
     @SerializedName("name")
-    private String  mName;
+    private String mName;
 
     @SerializedName("description")
-    private String  mDescription;
+    private String mDescription;
 
     @SerializedName("updated_at")
     private Date mLastUpdate;
@@ -80,7 +80,7 @@ public class Repository implements Comparable{
     }
 
     public Owner getOwner() {
-        if(mOwner == null){
+        if (mOwner == null) {
             mOwner = new Owner();
         }
         return mOwner;
@@ -90,6 +90,7 @@ public class Repository implements Comparable{
         owner.setUpdated(true);
         this.mOwner = owner;
     }
+
     public String getId() {
         return mID;
     }
@@ -127,11 +128,11 @@ public class Repository implements Comparable{
     }
 
     public boolean hasFork() {
-        return mForkCount>0;
+        return mForkCount > 0;
     }
 
     public ArrayList<Language> getLanguages() {
-        if(mLanguages == null){
+        if (mLanguages == null) {
             mLanguages = new ArrayList<>();
         }
         return mLanguages;
@@ -139,31 +140,21 @@ public class Repository implements Comparable{
 
     public void setLanguages(HashMap<String, Long> languages) {
 
-        if(this.mLanguages!=null) {
+        if (this.mLanguages != null) {
             this.mLanguages.clear();
         }
-        for (String languageKey: languages.keySet()) {
+        for (String languageKey : languages.keySet()) {
             addLanguage(languageKey, languages.get(languageKey));
         }
     }
 
-    public void addLanguage(String  strLanguage, Long strId) {
+    public void addLanguage(String strLanguage, Long strId) {
         Language language = new Language(strLanguage, strId);
-        if(this.mLanguages == null){
+        if (this.mLanguages == null) {
             mLanguages = new ArrayList<>();
         }
         this.mLanguages.add(language);
     }
-
-
-//
-//    @Override
-//    public int hashCode() {
-//        return new HashCodeBuilder(17, 37)
-//                .append(mId)
-//                .append(mName).toHashCode();
-//    }
-//
 
 
     @Override

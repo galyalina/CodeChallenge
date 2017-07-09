@@ -1,13 +1,8 @@
-package com.iotta.challenge.repositorydetails;
-
-import android.support.annotation.NonNull;
-
-import java.util.List;
+package com.iotta.challenge.viewpresenter.repositorydetails;
 
 import com.iotta.challenge.BasePresenter;
 import com.iotta.challenge.BaseView;
 import com.iotta.challenge.model.pojo.Repository;
-import com.iotta.challenge.repositorylist.RepositoryFilterType;
 
 /**
  * Created by Galya on 05/07/2017.

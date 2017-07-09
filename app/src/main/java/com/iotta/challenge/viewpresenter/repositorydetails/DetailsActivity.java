@@ -1,17 +1,13 @@
-package com.iotta.challenge.repositorydetails;
+package com.iotta.challenge.viewpresenter.repositorydetails;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.iotta.challenge.Injection;
 import com.iotta.challenge.R;
-import com.iotta.challenge.repositorylist.RepositoriesListFragment;
-import com.iotta.challenge.repositorylist.RepositoriesPresenter;
 import com.iotta.challenge.utils.AndroidUtils;
+import com.iotta.challenge.utils.Logger;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -36,6 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         // Create the presenter
         new DetailsPresenter(repositoryId, Injection.provideRepositoriesData(), detailsFragment);
+
+        Logger.debug("Details Fragment created");
     }
 
 }

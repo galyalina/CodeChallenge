@@ -1,4 +1,4 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,11 +1,10 @@
-package com.iotta.challenge.repositorydetails;
+package com.iotta.challenge.viewpresenter.repositorydetails;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 import com.iotta.challenge.R;
 import com.iotta.challenge.model.pojo.Language;
 import com.iotta.challenge.model.pojo.Repository;
-import com.iotta.challenge.repositorylist.RepositoriesListFragment;
 
 /**
  * A simple {@link Fragment} subclass.

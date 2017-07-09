@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Created by Galya on 05/07/2017.
+ * Created by Galya on 07/07/2017.
  */
 
 public class Owner {
@@ -27,12 +27,7 @@ public class Owner {
     private String mEmail;
 
     public Owner() {
-        this.mEmail = "";
-        this.mAvatarUrl = "";
-        this.mName = "";
-        this.mBlogUrl = "";
     }
-
 
     public Owner(String mAvatarUrl, String mName, String mBlogUrl, String strEmail) {
         this.mAvatarUrl = mAvatarUrl;

@@ -13,10 +13,10 @@ import retrofit2.Response;
 
 
 /**
- * Created by Galya on 08/07/2017.
+ * Created by Galya on 07/07/2017.
  */
 
-public abstract class IApiGetCB<T> implements Callback<T> {
+public abstract class ABSApiGetCB<T> implements Callback<T> {
 
     @Override
     public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {

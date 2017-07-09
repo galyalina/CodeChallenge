@@ -1,4 +1,4 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 import android.support.annotation.NonNull;
 
@@ -9,6 +9,7 @@ import java.util.List;
 import com.iotta.challenge.model.pojo.Repository;
 import com.iotta.challenge.model.repositoriesmgr.IRepositoriesManager;
 import com.iotta.challenge.model.repositoriesmgr.RepositoriesManager;
+import com.iotta.challenge.utils.Logger;
 
 /**
  * Created by Galya on 05/07/2017.
@@ -96,6 +97,9 @@ public class RepositoriesPresenter implements RepositoriesContract.IPresenter {
     public class GetRepositoryCB implements IRepositoriesManager.IGetRepositoryCallback{
         @Override
         public void onSuccess(@NonNull List<Repository> repositories) {
+
+            Logger.warn(repositories.size()+" were downloaded from network");
+
             mRepositoriesIView.setLoadingIndicator(false);
             if(!repositories.isEmpty()) {
                 sortRepositories(repositories);

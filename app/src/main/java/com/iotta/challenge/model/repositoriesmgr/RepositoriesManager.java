@@ -1,20 +1,14 @@
 package com.iotta.challenge.model.repositoriesmgr;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 
-import com.iotta.challenge.model.api.IApiGetCB;
-import com.iotta.challenge.model.repositoriesmgr.IRepositoriesManager;
+import com.iotta.challenge.model.api.ABSApiGetCB;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import com.iotta.challenge.model.pojo.Owner;
 import com.iotta.challenge.model.pojo.Repository;
@@ -23,10 +17,6 @@ import com.iotta.challenge.model.api.ApiInterface;
 import com.iotta.challenge.utils.Logger;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static android.R.attr.id;
 
 /**
  * Created by Galya on 05/07/2017.
@@ -50,7 +40,7 @@ public class RepositoriesManager implements IRepositoriesManager {
     }
 
     private void downloadRepositories(@NonNull final IGetRepositoryCallback repositoryLoadedCallback) {
-
+        Logger.debug("Download request initiated");
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<List<Repository>> callRepositories = apiService.getRepositories();
         callRepositories.enqueue(new GetRepositoriesCB(repositoryLoadedCallback));
@@ -58,13 +48,13 @@ public class RepositoriesManager implements IRepositoriesManager {
 
     @Override
     public void getRepositoryDetails(final @NonNull String id, @NonNull final IGetRepositoryDetailsCallback callback) {
+        Repository selectedRepository = checkNotNull(mRepositoriesHM.get(id));
 
-        Repository selectedRepository = mRepositoriesHM.get(id);
-
+        Logger.debug("Selected repository id is "+selectedRepository.getId());
         //Get basic info if exists owner and list of languages
         callback.onSuccess(selectedRepository);
 
-        //TODO update logic should be allayed, currently don't update if data exists
+        //TODO update logic should be applied, currently don't update if data exists
         if (mRepositoriesHM.get(id).getOwner().isUpdated() && !mRepositoriesHM.get(id).getLanguages().isEmpty()) {
             return;
         }
@@ -74,7 +64,6 @@ public class RepositoriesManager implements IRepositoriesManager {
         callOwner.enqueue(new GetOwnerDetailsCB(callback, selectedRepository));
 
         Call<HashMap<String, Long>> callLanguages = apiService.getListOfLanguages(selectedRepository.getLanguagesListUrl());
-
         callLanguages.enqueue(new GetLanguagesCB(callback, selectedRepository));
     }
 
@@ -103,7 +92,7 @@ public class RepositoriesManager implements IRepositoriesManager {
     }
 
 
-    class GetOwnerDetailsCB extends IApiGetCB<Owner> {
+    class GetOwnerDetailsCB extends ABSApiGetCB<Owner> {
 
         IGetRepositoryDetailsCallback m_cb;
         Repository m_selectedRepository;
@@ -125,7 +114,7 @@ public class RepositoriesManager implements IRepositoriesManager {
         }
     }
 
-    class GetLanguagesCB extends IApiGetCB<HashMap<String, Long>> {
+    class GetLanguagesCB extends ABSApiGetCB<HashMap<String, Long>> {
 
         IRepositoriesManager.IGetRepositoryDetailsCallback m_cb;
         Repository m_selectedRepository;
@@ -147,7 +136,7 @@ public class RepositoriesManager implements IRepositoriesManager {
         }
     }
 
-    class GetRepositoriesCB extends IApiGetCB<List<Repository>> {
+    class GetRepositoriesCB extends ABSApiGetCB<List<Repository>> {
 
         IRepositoriesManager.IGetRepositoryCallback m_cb;
 
@@ -166,6 +155,8 @@ public class RepositoriesManager implements IRepositoriesManager {
                 for (Repository item : responseObject) {
                     mRepositoriesHM.put(item.getId(), item);
                 }
+            }else{
+                Logger.warn("Download response successful but is empty");
             }
 
             m_cb.onSuccess(responseObject);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 /**
  * Used with the filter spinner in the tasks list.

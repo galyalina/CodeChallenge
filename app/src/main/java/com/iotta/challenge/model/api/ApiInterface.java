@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Url;
 
 /**
- * Created by Galya on 05/07/2017.
+ * Created by Galya on 07/07/2017.
  */
 
 public interface ApiInterface {

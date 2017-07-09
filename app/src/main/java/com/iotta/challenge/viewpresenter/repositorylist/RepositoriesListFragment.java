@@ -1,4 +1,4 @@
-package com.iotta.challenge.repositorylist;
+package com.iotta.challenge.viewpresenter.repositorylist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,8 @@ import java.util.List;
 
 import com.iotta.challenge.R;
 import com.iotta.challenge.model.pojo.Repository;
-import com.iotta.challenge.repositorydetails.DetailsActivity;
+import com.iotta.challenge.utils.Logger;
+import com.iotta.challenge.viewpresenter.repositorydetails.DetailsActivity;
 
 /**
  * A fragment representing a list of Items.
@@ -139,6 +140,7 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
                 mRecyclerView.setAdapter(new RepositoriesListRecyclerViewAdapter(mRepositories, new RepositoriesListRecyclerViewAdapter.IRepositoryItemListener() {
                     @Override
                     public void onRepositoryClick(String repositoryId) {
+                        Logger.debug("Repository "+repositoryId+" was selected");
                         mPresenter.openRepositoryDetails(repositoryId);
                     }
                 }));
@@ -152,6 +154,7 @@ public class RepositoriesListFragment extends Fragment implements RepositoriesCo
     public void showRepositoryDetailsUi(@NonNull String repositoryId) {
         Intent intent = new Intent(getContext(), DetailsActivity.class);
         intent.putExtra(DetailsActivity.EXTRA_REPOSITORY_ID, repositoryId);
+        //Start activity internally executes in the UI thread, no need to switch manually
         startActivity(intent);
     }
 
