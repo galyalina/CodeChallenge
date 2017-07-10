@@ -47,6 +47,7 @@ Usefull when overriding methods, such as hashCode, toString and equals.
 - Add more tests 
 - Add error message handling(currently jusy Toast notification)
 - Add analytics/bug reports SDKs(Splunk mint etc)
+- Add ProGuard
 
 ### License
 
