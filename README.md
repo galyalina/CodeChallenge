@@ -2,8 +2,7 @@
 
 Simple android application organized accourding to MVP(Model View Presenter) pattern.
 The MVP pattern allows separate the presentation layer from the logic and makes views independent from data source. 
-Application into three different layers, which let us test them independently. Additional advantage of 
-MVP pattern that it allows to test most of the logic without using instrumentation tests.
+Additional advantage of MVP pattern that it allows to test most of the logic without using instrumentation tests.
 
 # Features
  - Repositories list view
@@ -43,7 +42,11 @@ Usefull when overriding methods, such as hashCode, toString and equals.
 
 ### Todos
 
- - Add more tests 
+- Tablet two panel view support
+- Refresh data 
+- Add more tests 
+- Add error message handling(currently jusy Toast notification)
+- Add analytics/bug reports SDKs(Splunk mint etc)
 
 ### License
 
