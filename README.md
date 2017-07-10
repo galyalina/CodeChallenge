@@ -45,7 +45,9 @@ Usefull when overriding methods, such as hashCode, toString and equals.
 
 - Tablet two panel view support
 - Refresh data 
- - Add more tests 
+- Add more tests 
+- Add error message handling(currently jusy Toast notification)
+- Add analytics/bug reports SDKs(Splunk mint etc)
 
 ### License
 
