@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iotta.challenge.utils.JavaUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -88,11 +89,24 @@ public class DetailsFragment extends Fragment implements DetailsContract.View {
         TextView txtLanguages = (TextView) m_rootView.findViewById(R.id.txtLanguages);
         TextView txtOwnerBlog = (TextView) m_rootView.findViewById(R.id.txtOwnerBlog);
         TextView txtOwnerEmail = (TextView) m_rootView.findViewById(R.id.txtOwnerEmail);
+        TextView txtUpdateDate = (TextView) m_rootView.findViewById(R.id.txtUpdateDate);
+        TextView txtFork = (TextView) m_rootView.findViewById(R.id.txtFork);
+
         RecyclerView mLanguagesRecycleView = (RecyclerView) m_rootView.findViewById(R.id.recycler_view);
 
         txtOwnerName.setText(repository.getOwner().getName());
         txtOwnerBlog.setText(repository.getOwner().getmBlogUrl());
         txtOwnerEmail.setText(repository.getOwner().getEmail());
+        txtUpdateDate.setText(JavaUtils.convert(repository.getLastUpdate()));
+
+        if(repository.hasFork()){
+            txtFork.setText(R.string.has_fork);
+        }
+        else{
+            txtFork.setText(R.string.hasnt_fork);
+        }
+
+
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mLanguagesRecycleView.setLayoutManager(mLayoutManager);
 

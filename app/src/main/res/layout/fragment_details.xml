@@ -28,9 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/txtOwnerBlog"
             android:layout_alignLeft="@+id/txtOwnerBlog"
+            android:text ="Test"
             android:layout_alignStart="@+id/txtOwnerBlog"/>
 
         <TextView
+            android:text ="CSDALFHOVWSBDUOFVCWOSABDOnquCB"
             android:id="@+id/txtOwnerBlog"
             style="@style/RepositoryDetailsItemText"
             android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
             android:layout_marginRight="10dp"/>
 
         <TextView
+            android:text ="TesfdnOASHSFUOIAGBSFUst"
             android:id="@+id/txtOwnerEmail"
             style="@style/RepositoryDetailsItemText"
             android:layout_width="wrap_content"
@@ -57,12 +60,45 @@
 
 
         <View
-            android:id="@+id/delimiter1"
+            android:id="@+id/delimiter0"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/ownerAvatar"
             android:layout_marginTop="20dp"
             android:background="@color/divider" />
+
+
+        <TextView
+            android:text="@string/details_last_update_title"
+            android:id="@+id/latestUpdateTitle"
+            style="@style/RepositoryDetailsItemSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/delimiter0"
+        />
+
+        <TextView
+            android:id="@+id/txtUpdateDate"
+            android:layout_toRightOf="@+id/latestUpdateTitle"
+            android:layout_alignBaseline="@+id/latestUpdateTitle"
+            android:layout_marginLeft="10dp"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/delimiter0"
+            />
+
+        <View
+            android:id="@+id/delimiter1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txtUpdateDate"
+            android:layout_marginTop="20dp"
+            android:background="@color/divider" />
+
 
         <TextView
             android:id="@+id/txtDescriptionTitle"
@@ -76,11 +112,24 @@
             android:text="@string/details_description_title" />
 
         <TextView
-            android:id="@+id/txtDescription"
+            android:id="@+id/txtFork"
             style="@style/RepositoryDetailsItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtDescriptionTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_description_text_placeholder" />
+
+
+        <TextView
+            android:id="@+id/txtDescription"
+            style="@style/RepositoryDetailsItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtFork"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginStart="10dp"

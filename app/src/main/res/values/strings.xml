@@ -12,6 +12,9 @@
     <string name="empty_repository_content_description">Empty repository</string>
 
     <string name="details_description_title">Description</string>
+    <string name="details_last_update_title">Last Update</string>
+    <string name="has_fork">has fork</string>
+    <string name="hasnt_fork">no forks</string>
     <string name="details_description_text_placeholder">Loading description…</string>
     <string name="details_description_empty_text">Description not available</string>
     <string name="details_languages_title">Languages</string>
