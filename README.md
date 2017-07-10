@@ -2,8 +2,8 @@
 
 Simple android application organized accourding to MVP(Model View Presenter) pattern.
 The MVP pattern allows separate the presentation layer from the logic and makes views independent from data source. 
-We divide the application into at least three different layers, which let us test them independently. 
-MVP pattern allows to test most of the logic without using instrumentation tests.
+Application into three different layers, which let us test them independently. Additional advantage of 
+MVP pattern that it allows to test most of the logic without using instrumentation tests.
 
 # Features
  - Repositories list view
