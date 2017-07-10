@@ -7,10 +7,13 @@ MVP pattern that it allows to test most of the logic without using instrumentati
 
 # Features
  - Repositories list view
+ 
 Fetch the list of repositories from the API Endpoint mentioned and display them
 in a list view. Each item of the list contain the name, the description and the last
 time the repository was updated.
+
  - Detail view
+ 
 This view will open when a user clicks on a list item. The view contain name,
 description, programming languages, whether or not the repository is a fork,
 date of the last update and owner information.
