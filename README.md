@@ -20,7 +20,9 @@ date of the last update and owner information.
 
 ### Pre-requisites
 Android SDK 25
+
 Android Build Tools v25.0.2
+
 Android Support Repository
 
 ### Tech
@@ -28,10 +30,15 @@ Android Support Repository
 Dillinger uses a number of open source projects to work properly:
 
 * [Picasso](https://github.com/square/picasso) - A powerful image downloading and caching library for Android
+
 Used for simple loading of User's avatar
+
 * [Retrofit](http://square.github.io/retrofit/) - Type-safe HTTP client for Android and Java by Square, Inc.
+
 Used for Get requests
+
 * [Apache Commons](https://commons.apache.org/proper/commons-lang/)  Lang provides a host of helper utilities for the java.lang API, notably String manipulation methods, basic numerical methods, object reflection, concurrency, creation and serialization and System properties. 
+
 Usefull when overriding methods, such as hashCode, toString and equals.
 
 ### Todos
