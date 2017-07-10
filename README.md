@@ -43,6 +43,8 @@ Usefull when overriding methods, such as hashCode, toString and equals.
 
 ### Todos
 
+- Tablet two panel view support
+- Refresh data 
  - Add more tests 
 
 ### License
