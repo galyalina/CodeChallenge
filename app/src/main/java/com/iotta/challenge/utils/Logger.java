@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.Set;
 
 /**
- * Created by Galya on 07/07/2017.
+ * Wrapper class that formats output los
  */
 
 public class Logger {

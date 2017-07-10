@@ -1,4 +1,4 @@
-package com.iotta.challenge.model.api;
+package com.iotta.challenge.model.rest;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -13,9 +13,8 @@ import retrofit2.Response;
 
 
 /**
- * Created by Galya on 07/07/2017.
+ * Abstract class dealing with Retrofit response and error, generalize error handling for concrete application
  */
-
 public abstract class ABSApiGetCB<T> implements Callback<T> {
 
     @Override
@@ -61,6 +60,7 @@ public abstract class ABSApiGetCB<T> implements Callback<T> {
 
     @Override
     public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+        //TODO proper error handling mechanism should be added, popups/logs/analytics and so on.
         Logger.error("Network request failed ", t);
         handleError(t.getMessage());
     }

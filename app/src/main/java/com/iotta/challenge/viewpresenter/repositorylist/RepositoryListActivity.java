@@ -10,12 +10,9 @@ import com.iotta.challenge.R;
 import com.iotta.challenge.utils.AndroidUtils;
 
 /**
- * An activity representing a list of Repositories. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link } representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * An activity representing a list of Repositories, which when touched,
+ * lead to a {@link com.iotta.challenge.viewpresenter.repositorydetails.DetailsActivity} representing
+ * item details.
  */
 public class RepositoryListActivity extends AppCompatActivity{
 

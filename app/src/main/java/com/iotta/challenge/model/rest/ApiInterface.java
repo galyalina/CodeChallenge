@@ -1,4 +1,4 @@
-package com.iotta.challenge.model.api;
+package com.iotta.challenge.model.rest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +10,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Url;
 
 /**
- * Created by Galya on 07/07/2017.
+ * Class contains all network requests
  */
-
 public interface ApiInterface {
 
     @GET("users/heremaps/repos")

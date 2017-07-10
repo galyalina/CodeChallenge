@@ -15,7 +15,9 @@
  */
 
 package com.iotta.challenge;
-
+/*
+    MVP model interface
+ */
 public interface BasePresenter {
 
     void start();

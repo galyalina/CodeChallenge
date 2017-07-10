@@ -20,8 +20,9 @@ public class JavaUtilsTest {
     public void convert() throws Exception {
         String strDate = "12/25/1985 01:00:00";
         Date date = new Date();
-        date.setTime(12);
+        date.setTime(504316800000L);
 
-        assertEquals(new Date(), 2 + 2);
+        String result = JavaUtils.convert(date);
+        assertEquals(result, strDate);
     }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by Galya on 06/07/2017.
+ * Utils that doesn't use Android components
  */
 
 public class JavaUtils {

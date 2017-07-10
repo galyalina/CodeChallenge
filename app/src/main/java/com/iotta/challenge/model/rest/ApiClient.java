@@ -1,12 +1,11 @@
-package com.iotta.challenge.model.api;
+package com.iotta.challenge.model.rest;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Galya on 07/07/2017.
+ * Retrofit API gateway
  */
-
 public class ApiClient {
 
     private static final String BASE_URL = "https://api.github.com/";

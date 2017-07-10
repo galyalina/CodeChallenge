@@ -16,6 +16,9 @@
 
 package com.iotta.challenge;
 
+/*
+    MVP model interface
+ */
 public interface BaseView<T> {
 
     void setPresenter(T presenter);

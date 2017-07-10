@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 
 /**
- * Created by Galya on 07/07/2017.
+ * Class with all utils functions that use Android components
  */
 
 public class AndroidUtils {

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.espresso.matcher.BoundedMatcher;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
@@ -47,7 +48,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class RepositoryListActivityTestSortAndClick {
+public class RepositoryListActivityTest {
 
     private UiDevice device;
     private static final String PACKAGE = "com.iotta.challenge";
@@ -111,7 +112,6 @@ public class RepositoryListActivityTestSortAndClick {
             ViewInteraction recyclerView = onView(allOf(withId(R.id.repositories_list), withParent(allOf(withId(R.id.tasksLL), withParent(withId(R.id.tasksContainer)))),
                     isDisplayed()));
             recyclerView.perform(actionOnItemAtPosition(0, click()));
-            onData(allOf(is(instanceOf(List.class)), is(withContent(TEST_LIST_REPOSITORY))));
         } catch (NoMatchingViewException e) {
             onView(allOf(withId(R.id.emptyRepositoryLayout), withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         }
@@ -140,25 +140,8 @@ public class RepositoryListActivityTestSortAndClick {
                                 withParent(withId(R.id.tasksContainer)))),
                         isDisplayed()));
         recyclerView.perform(actionOnItemAtPosition(0, click()));
-        onData(allOf(is(instanceOf(List.class)), is(withContent( TEST_LIST_REPOSITORY ))));//.perform(click());
         } catch (NoMatchingViewException e) {
             onView(allOf(withId(R.id.emptyRepositoryLayout), withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         }
     }
-
-    public static Matcher<Repository> withContent(final Repository content) {
-        return new BoundedMatcher<Repository, Repository>(Repository.class) {
-
-            @Override
-            public boolean matchesSafely(Repository myObj) {
-                return myObj.equals(content);
-            }
-
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("With content '" + content + "'");
-            }
-        };
-    }
-
 }

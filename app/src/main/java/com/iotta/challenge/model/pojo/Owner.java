@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Created by Galya on 07/07/2017.
+ * Created by Galya on 08/07/2017.
  */
 
 public class Owner {

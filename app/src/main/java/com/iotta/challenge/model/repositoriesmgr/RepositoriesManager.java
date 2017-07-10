@@ -2,7 +2,7 @@ package com.iotta.challenge.model.repositoriesmgr;
 
 import android.support.annotation.NonNull;
 
-import com.iotta.challenge.model.api.ABSApiGetCB;
+import com.iotta.challenge.model.rest.ABSApiGetCB;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -12,16 +12,15 @@ import java.util.List;
 
 import com.iotta.challenge.model.pojo.Owner;
 import com.iotta.challenge.model.pojo.Repository;
-import com.iotta.challenge.model.api.ApiClient;
-import com.iotta.challenge.model.api.ApiInterface;
+import com.iotta.challenge.model.rest.ApiClient;
+import com.iotta.challenge.model.rest.ApiInterface;
 import com.iotta.challenge.utils.Logger;
 
 import retrofit2.Call;
 
 /**
- * Created by Galya on 05/07/2017.
+ * Class to store, manipulate and retrieve data
  */
-
 public class RepositoriesManager implements IRepositoriesManager {
 
     private static RepositoriesManager INSTANCE;

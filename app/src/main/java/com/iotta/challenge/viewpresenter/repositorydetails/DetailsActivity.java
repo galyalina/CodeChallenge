@@ -9,6 +9,9 @@ import com.iotta.challenge.R;
 import com.iotta.challenge.utils.AndroidUtils;
 import com.iotta.challenge.utils.Logger;
 
+/**
+ * Container Activity that has {@link DetailsFragment} inside
+ */
 public class DetailsActivity extends AppCompatActivity {
 
     public static final String EXTRA_REPOSITORY_ID = "REPOSITORY_ID";
