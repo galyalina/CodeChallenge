@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.iotta.challenge.Injection;
 import com.iotta.challenge.R;
 import com.iotta.challenge.utils.AndroidUtils;
+import com.iotta.challenge.utils.Logger;
 
 /**
  * An activity representing a list of Repositories, which when touched,
@@ -22,6 +23,8 @@ public class RepositoryListActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repositories);
+
+        Logger.debug("RepositoryListActivity created");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -48,10 +48,6 @@ public class Owner {
         return mAvatarUrl;
     }
 
-    public void setmAvatarUrl(String mAvatarUrl) {
-        this.mAvatarUrl = mAvatarUrl;
-    }
-
     public String getName() {
         return mName;
     }
@@ -64,16 +60,8 @@ public class Owner {
         return mBlogUrl;
     }
 
-    public void setmBlogUrl(String blogUrl) {
-        this.mBlogUrl = blogUrl;
-    }
-
     public String getEmail() {
         return mEmail;
-    }
-
-    public void setEmail(String email) {
-        this.mEmail = email;
     }
 
     @Override

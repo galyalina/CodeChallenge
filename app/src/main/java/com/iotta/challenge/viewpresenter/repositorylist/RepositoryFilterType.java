@@ -17,7 +17,7 @@
 package com.iotta.challenge.viewpresenter.repositorylist;
 
 /**
- * Used with the filter spinner in the tasks list.
+ * Used with the filter spinner in the repositories list.
  */
 public enum RepositoryFilterType {
     /**

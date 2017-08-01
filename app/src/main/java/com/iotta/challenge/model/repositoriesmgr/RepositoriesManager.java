@@ -53,8 +53,11 @@ public class RepositoriesManager implements IRepositoriesManager {
         //Get basic info if exists owner and list of languages
         callback.onSuccess(selectedRepository);
 
+
+        Repository repository = mRepositoriesHM.get(id);
+
         //TODO update logic should be applied, currently don't update if data exists
-        if (mRepositoriesHM.get(id).getOwner().isUpdated() && !mRepositoriesHM.get(id).getLanguages().isEmpty()) {
+        if (repository.getOwner().isUpdated() && !repository.getLanguages().isEmpty()) {
             return;
         }
 

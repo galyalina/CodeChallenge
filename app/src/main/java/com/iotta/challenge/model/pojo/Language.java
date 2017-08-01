@@ -23,18 +23,9 @@ public class Language {
         return mName;
     }
 
-    public void setName(String name) {
-        this.mName = name;
-    }
-
     public Long getId() {
         return mId;
     }
-
-    public void setId(Long id) {
-        this.mId = id;
-    }
-
 
     @Override
     public boolean equals(Object obj) {
